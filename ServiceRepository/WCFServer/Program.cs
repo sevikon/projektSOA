@@ -9,6 +9,9 @@ using System.ServiceModel.Description;
 using System.Runtime.Serialization;
 using NServiceRepository;
 using System.Configuration;
+using log4net;
+
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 /**
  * ######## ServiceRepository #########
@@ -24,8 +27,11 @@ namespace NServiceRepository
      * */
     public class Program
     {
+        
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         static void Main(string[] args)
         {
+            log4net.Config.XmlConfigurator.Configure();
             try
             {
                 ServiceRepository Repository = new ServiceRepository();
@@ -33,9 +39,7 @@ namespace NServiceRepository
                 string serviceRepoAddress = ConfigurationSettings.AppSettings["serviceRepoAddress"];
                 var Server = new ServiceRepositoryHost(Repository, serviceRepoAddress);
                 Server.AddDefaultEndpoint("net.tcp://localhost:41234/IServiceRepository");
-
                 ServiceDebugBehavior debug = Server.Description.Behaviors.Find<ServiceDebugBehavior>();
-
                 // if not found - add behavior with setting turned on 
                 if (debug == null)
                 {
@@ -51,15 +55,16 @@ namespace NServiceRepository
                     }
                 }
                 Server.Open();
-
+                log.Info("Uruchomienie Serwera");
                 Console.WriteLine("Chyba działa...");
             }
             catch (ServiceRepositoryException Ex)
             {
+                log.Info("Złapano wyjatek: " + Ex.Message);
                 Console.WriteLine(Ex.Message);
             }
-
             Console.ReadLine();
+            log.Info("Zatrzymanie Serwera");
         }
     }
 }

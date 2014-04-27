@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Runtime.Serialization;
+using log4net;
 
 namespace NServiceRepository
 {
@@ -20,6 +21,8 @@ namespace NServiceRepository
          * Lista z serwisami
          * */
         private List<Service> Services;
+
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public ServiceRepository()
         {
@@ -40,7 +43,7 @@ namespace NServiceRepository
             var NewService = new Service();
             NewService.Adress = Address;
             NewService.Name = Name;
-
+            log.Info("Zarejestrowano serwis: " + Name + " pod adresem: " + Address);
             Services.Add(NewService);
         }
 
@@ -64,7 +67,7 @@ namespace NServiceRepository
             var Service = FindService(Name);
 
             if (Service == null) throw new ServiceNotFoundException();
-
+            log.Info("Wyrejestrowano serwis: " + Name);
             Services.Remove(Service);
         }
 

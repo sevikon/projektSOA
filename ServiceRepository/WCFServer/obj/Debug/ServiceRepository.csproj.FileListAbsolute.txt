@@ -10,3 +10,11 @@ E:\Dokumenty\Konrad\Windows\Downloads\IServiceRepository-master\IServiceReposito
 E:\Dokumenty\Konrad\Windows\Downloads\IServiceRepository-master\IServiceRepository-master\ServiceRepository\WCFServer\bin\Debug\WCFServer.exe
 E:\Dokumenty\Konrad\Windows\Downloads\IServiceRepository-master\IServiceRepository-master\ServiceRepository\WCFServer\bin\Debug\WCFServer.pdb
 E:\Dokumenty\Konrad\Windows\Downloads\IServiceRepository-master\IServiceRepository-master\ServiceRepository\WCFServer\obj\Debug\ServiceRepository.csprojResolveAssemblyReference.cache
+C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\bin\Debug\WCFServer.exe.config
+C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\obj\Debug\WCFServer.exe
+C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\obj\Debug\WCFServer.pdb
+C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\bin\Debug\WCFServer.exe
+C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\bin\Debug\WCFServer.pdb
+C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\obj\Debug\ServiceRepository.csprojResolveAssemblyReference.cache
+C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\bin\Debug\log4net.dll
+C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\bin\Debug\log4net.xml

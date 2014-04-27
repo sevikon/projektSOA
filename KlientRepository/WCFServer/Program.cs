@@ -39,7 +39,7 @@ namespace NServiceRepository
             }
             catch (FaultException ex)
             {
-                string msg = "FaultException: " + ex.Message;
+                string msg = "FaultException: " + ex.Message;           
                 Console.WriteLine(msg);
                 Console.ReadLine();
             }
@@ -59,6 +59,10 @@ namespace NServiceRepository
 
         [OperationContract]
         void Alive(String Name);
+    }
+    [ServiceContract]
+    public class ServiceRepositoryException
+    { 
     }
 
 }

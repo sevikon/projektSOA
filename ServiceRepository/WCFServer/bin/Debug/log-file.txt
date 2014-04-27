@@ -1,0 +1,3 @@
+2014-04-27 03:29:09,361 [8] INFO  NServiceRepository.Program [(null)] - Uruchomienie Serwera
+2014-04-27 03:29:20,562 [9] INFO  NServiceRepository.ServiceRepository [(null)] - Zarejestrowano serwis: lolek2 pod adresem: adres_lolek2
+2014-04-27 03:29:27,484 [8] INFO  NServiceRepository.Program [(null)] - Zatrzymanie Serwera
