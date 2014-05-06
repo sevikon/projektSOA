@@ -33,8 +33,11 @@ namespace NServiceRepository
                 var cf = new ChannelFactory<IServiceRepository>(new NetTcpBinding(SecurityMode.None), new EndpointAddress("net.tcp://localhost:41234/IServiceRepository"));
                 IServiceRepository serwis = cf.CreateChannel();
                 serwis.RegisterService("lolek2", "adres_lolek2");
+                System.Threading.Thread.Sleep(3000);
                 serwis.Alive("lolek2");
-                Console.WriteLine(serwis.GetServiceLocation("lol"));
+                System.Threading.Thread.Sleep(3000);
+                serwis.Alive("lolek2");
+                Console.WriteLine(serwis.GetServiceLocation("lolek2"));
                 Console.ReadLine();
             }
             catch (FaultException ex)

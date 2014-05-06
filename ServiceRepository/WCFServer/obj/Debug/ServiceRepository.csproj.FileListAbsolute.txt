@@ -18,3 +18,15 @@ C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\bin\Debug\W
 C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\obj\Debug\ServiceRepository.csprojResolveAssemblyReference.cache
 C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\bin\Debug\log4net.dll
 C:\Users\Gry\Documents\GitHub\projektSOA\ServiceRepository\WCFServer\bin\Debug\log4net.xml
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\bin\Debug\WCFServer.exe.config
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\obj\Debug\WCFServer.exe
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\obj\Debug\WCFServer.pdb
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\bin\Debug\WCFServer.exe
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\bin\Debug\WCFServer.pdb
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\bin\Debug\EntityFramework.dll
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\bin\Debug\log4net.dll
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\bin\Debug\EntityFramework.xml
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\bin\Debug\log4net.xml
+C:\Users\Gry\Desktop\ServiceRepository\WCFServer\obj\Debug\ServiceRepository.csprojResolveAssemblyReference.cache

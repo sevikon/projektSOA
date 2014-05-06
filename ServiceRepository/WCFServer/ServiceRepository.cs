@@ -8,6 +8,9 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Runtime.Serialization;
 using log4net;
+using WCFServer.Models;
+using WCFServer;
+using System.Threading;
 
 namespace NServiceRepository
 {
@@ -21,12 +24,20 @@ namespace NServiceRepository
          * Lista z serwisami
          * */
         private List<Service> Services;
+        private Repository Repo;
+        private MyTimer oTimer;
+            
 
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public ServiceRepository()
         {
             Services = new List<Service>();
+            Repo = new Repository();
+            oTimer = new MyTimer(Repo);
+            Repo.CleanServices();
+            Thread timerThread = new Thread(oTimer.StartTimer);
+            timerThread.Start();
         }
 
         /**
@@ -43,8 +54,11 @@ namespace NServiceRepository
             var NewService = new Service();
             NewService.Adress = Address;
             NewService.Name = Name;
+            NewService.LastSeen = DateTime.Now;
+            Console.WriteLine("Zarejestrowano serwis: " + Name + " pod adresem: " + Address);
             log.Info("Zarejestrowano serwis: " + Name + " pod adresem: " + Address);
             Services.Add(NewService);
+            Repo.AddService(NewService);
         }
 
         /**
@@ -65,10 +79,11 @@ namespace NServiceRepository
         public void Unregister(String Name)
         {
             var Service = FindService(Name);
-
             if (Service == null) throw new ServiceNotFoundException();
+            Console.WriteLine("Wyrejestrowano serwis: " + Name);
             log.Info("Wyrejestrowano serwis: " + Name);
             Services.Remove(Service);
+            Repo.RemoveService(Service);
         }
 
         /**
@@ -76,7 +91,12 @@ namespace NServiceRepository
          * */
         public void Alive(String Name)
         {
-            Console.WriteLine("Still Alive");
+            var Service = FindService(Name);
+            if (Service == null) throw new ServiceNotFoundException();
+            Service.LastSeen = DateTime.Now; 
+            Repo.UpdateService(Service);
+            Console.WriteLine("Zglosil sie serwis: "+Name);
+            log.Info("Zglosil sie serwis: " + Name );
         }
 
         /**
@@ -84,7 +104,8 @@ namespace NServiceRepository
          * */
         private Service FindService(String Name)
         {
-            return Services.Find(Element => Element.Name == Name);
+            return Repo.FindService(Name);
+            //return Services.Find(Element => Element.Name == Name);
         }
 
     }

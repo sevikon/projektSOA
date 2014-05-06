@@ -22,3 +22,9 @@ C:\Users\Gry\Documents\GitHub\projektSOA\KlientRepository\WCFServer\obj\Debug\WC
 C:\Users\Gry\Documents\GitHub\projektSOA\KlientRepository\WCFServer\bin\Debug\WCFServer.exe
 C:\Users\Gry\Documents\GitHub\projektSOA\KlientRepository\WCFServer\bin\Debug\WCFServer.pdb
 C:\Users\Gry\Documents\GitHub\projektSOA\KlientRepository\WCFServer\obj\Debug\ServiceRepository.csprojResolveAssemblyReference.cache
+C:\Users\Gry\Desktop\KlientRepository\WCFServer\bin\Debug\WCFServer.exe.config
+C:\Users\Gry\Desktop\KlientRepository\WCFServer\obj\Debug\WCFServer.exe
+C:\Users\Gry\Desktop\KlientRepository\WCFServer\obj\Debug\WCFServer.pdb
+C:\Users\Gry\Desktop\KlientRepository\WCFServer\bin\Debug\WCFServer.exe
+C:\Users\Gry\Desktop\KlientRepository\WCFServer\bin\Debug\WCFServer.pdb
+C:\Users\Gry\Desktop\KlientRepository\WCFServer\obj\Debug\ServiceRepository.csprojResolveAssemblyReference.cache

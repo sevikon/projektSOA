@@ -10,6 +10,8 @@ using System.Runtime.Serialization;
 using NServiceRepository;
 using System.Configuration;
 using log4net;
+using System.Data.Entity;
+using WCFServer.Models;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -31,6 +33,7 @@ namespace NServiceRepository
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         static void Main(string[] args)
         {
+            Database.SetInitializer<EFDbContext>(new DropCreateDatabaseIfModelChanges<EFDbContext>());
             log4net.Config.XmlConfigurator.Configure();
             try
             {
