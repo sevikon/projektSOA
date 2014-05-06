@@ -8,6 +8,9 @@ using NServiceRepository;
 
 namespace WCFServer.Models
 {
+    /**
+    * Skorzystanie z dobrodziejstw Entity Framework
+    * */
     public class EFDbContext : DbContext
     {
         public DbSet<Service> Servs { get; set; }

@@ -7,30 +7,54 @@ using WCFServer.Models;
 
 namespace WCFServer
 {
+
+    /**
+     * Klasa odpowiedzialna za Timer do usuwania nieaktywnych serwisow
+     * */
     class MyTimer
     {
         private int m_nStart = 0;
-        Repository repos;
-        public MyTimer(Repository rep){
-            repos = rep;
+        Repository Repos;
+        NonRepository NonRepos;
+        Timer oTimer;
+        bool Datab;
+        
+        public MyTimer(Repository Rep){
+            Repos = Rep;
+            Datab = true;
         }
 
+        public MyTimer(NonRepository Rep)
+        {
+            NonRepos = Rep;
+            Datab = false;
+        }
+
+        /**
+         * Odpalenie Timera
+         * */
         public void StartTimer()
         {
             m_nStart = Environment.TickCount;
-            Timer oTimer = new Timer();
+            oTimer = new Timer();
             oTimer.Elapsed += new ElapsedEventHandler(OnTimeEvent);
             oTimer.Interval = 1000;
             oTimer.Enabled = true;
-            Console.Read();
-            oTimer.Stop();
+        }
+        
+        /**
+         * Metoda wywyolywana co pewien okres czasu
+         * */
+        private void OnTimeEvent(object oSource,ElapsedEventArgs oElapsedEventArgs)
+        {
+            if (Datab)
+                Repos.KillZombieServices();
+            else
+                NonRepos.KillZombieServices();
         }
 
-        private void OnTimeEvent(object oSource,
-            ElapsedEventArgs oElapsedEventArgs)
-        {
-            //Console.WriteLine("Upłyneło {0} milisekud",Environment.TickCount - m_nStart);
-            repos.KillZombieServices();
+        ~MyTimer() {
+            oTimer.Stop();
         }
     }
 }

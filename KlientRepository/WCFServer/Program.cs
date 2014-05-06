@@ -30,14 +30,20 @@ namespace NServiceRepository
             try
             {
                 string serviceRepoAddress = ConfigurationSettings.AppSettings["serviceRepoAddress"];
-                var cf = new ChannelFactory<IServiceRepository>(new NetTcpBinding(SecurityMode.None), new EndpointAddress("net.tcp://localhost:41234/IServiceRepository"));
+                var cf = new ChannelFactory<IServiceRepository>(new NetTcpBinding(SecurityMode.None), new EndpointAddress(serviceRepoAddress));
                 IServiceRepository serwis = cf.CreateChannel();
-                serwis.RegisterService("lolek2", "adres_lolek2");
+                serwis.RegisterService("serwis1", "adres_serwisu_1");
+                serwis.RegisterService("serwis2", "adres_serwisu_2");
+                Console.WriteLine(serwis.GetServiceLocation("serwis2"));
                 System.Threading.Thread.Sleep(3000);
-                serwis.Alive("lolek2");
+                serwis.Alive("serwis2");
                 System.Threading.Thread.Sleep(3000);
-                serwis.Alive("lolek2");
-                Console.WriteLine(serwis.GetServiceLocation("lolek2"));
+                serwis.Alive("serwis2");
+                System.Threading.Thread.Sleep(3000);
+                serwis.Alive("serwis2");
+                System.Threading.Thread.Sleep(3000);
+                serwis.Alive("serwis2");
+                Console.WriteLine(serwis.GetServiceLocation("serwis2"));
                 Console.ReadLine();
             }
             catch (FaultException ex)

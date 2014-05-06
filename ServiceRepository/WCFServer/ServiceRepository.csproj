@@ -56,6 +56,7 @@
     <Compile Include="Excceptions.cs" />
     <Compile Include="IServiceRepository.cs" />
     <Compile Include="Models\EFDbContext.cs" />
+    <Compile Include="Models\NonRepository.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="MyTimer.cs" />
     <Compile Include="Program.cs" />

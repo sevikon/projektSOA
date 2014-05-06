@@ -33,21 +33,30 @@ namespace NServiceRepository
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         static void Main(string[] args)
         {
+            //aby baza sie mogla zaktualizowac do obecnego modelu klasy
             Database.SetInitializer<EFDbContext>(new DropCreateDatabaseIfModelChanges<EFDbContext>());
+            //korzystanie z log4neta
             log4net.Config.XmlConfigurator.Configure();
+            ServiceRepository Repository;
             try
             {
-                ServiceRepository Repository = new ServiceRepository();
-                //Repository.Register("yoyo", "yyyy");
+                //wybranie czy korzystamy z bazy danych czy mock
+                Console.WriteLine("Service with Database ? (y/n)");
+                if (Console.ReadLine().ToLower() == "y")
+                    Repository = new ServiceRepository();
+                else
+                    Repository = new ServiceRepository(false);
+                //pobranie adresu servRep z app.config
                 string serviceRepoAddress = ConfigurationSettings.AppSettings["serviceRepoAddress"];
+                //odpalenie serwisu
                 var Server = new ServiceRepositoryHost(Repository, serviceRepoAddress);
-                Server.AddDefaultEndpoint("net.tcp://localhost:41234/IServiceRepository");
+                Server.AddDefaultEndpoint(serviceRepoAddress);
                 ServiceDebugBehavior debug = Server.Description.Behaviors.Find<ServiceDebugBehavior>();
                 // if not found - add behavior with setting turned on 
                 if (debug == null)
                 {
                     Server.Description.Behaviors.Add(
-                         new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
+                            new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
                 }
                 else
                 {
@@ -59,7 +68,9 @@ namespace NServiceRepository
                 }
                 Server.Open();
                 log.Info("Uruchomienie Serwera");
-                Console.WriteLine("Chyba działa...");
+                Console.WriteLine("Uruchomienie Serwera");
+                //komunikacja z innymi serwisami
+                Console.ReadLine();
             }
             catch (ServiceRepositoryException Ex)
             {
